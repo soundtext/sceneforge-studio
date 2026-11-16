@@ -1,20 +1,48 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# SceneForge Studio
 
-# Run and deploy your AI Studio app
+Aplikasi pembuat mockup gambar 5 opsi dengan variasi ukuran, kustomisasi teks, dan ekstraksi latar belakang scene game dari file HTML.
 
-This contains everything you need to run your app locally.
+Seluruh proses berjalan di browser (client-side), jadi hasil build-nya adalah situs statis.
 
-View your app in AI Studio: https://ai.studio/apps/ac4894a0-6037-48a9-a722-20017b654185
+## Menjalankan secara lokal
 
-## Run Locally
+**Prasyarat:** Node.js 22.x
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
 
+Perintah lain:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run build    # build produksi ke folder dist/
+npm run preview  # cek hasil build secara lokal
+npm run lint     # type-check TypeScript
+```
+
+## Deploy ke Vercel
+
+Project ini sudah disiapkan untuk Vercel lewat `vercel.json`:
+
+- **Framework:** Vite
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+
+Langkah deploy:
+
+1. Buka [vercel.com/new](https://vercel.com/new), lalu import repo `soundtext/sceneforge-studio`.
+2. Biarkan semua pengaturan default (Vercel membaca `vercel.json`).
+3. Klik **Deploy**. Tidak ada environment variable yang wajib diisi.
+
+Atau lewat CLI:
+
+```bash
+npx vercel --prod
+```
+
+### Catatan penting saat deploy
+
+- **Gunakan `package-lock.json` sebagai satu-satunya lockfile.** Jangan menambahkan `bun.lock`/`pnpm-lock.yaml` di repo yang sama — konflik lockfile membuat proses instalasi memilih resolver yang berbeda dan bisa memunculkan error `ERESOLVE`.
+- **Jangan menambahkan `esbuild` manual ke devDependencies.** Vite 8 memakai `esbuild` sebagai *optional peer* (`^0.27 || ^0.28`), dan `tsx` sudah membawa versi yang cocok. Memasang `esbuild@0.25` secara eksplisit akan membuat `npm install` gagal dengan `ERESOLVE`.
+- `npm warn Unknown env config "cache-dir"` yang muncul di log Vercel hanyalah peringatan dari environment Vercel dan tidak mempengaruhi build.
