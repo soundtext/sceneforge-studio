@@ -1,0 +1,6 @@
+{
+  "summary":  "Rencana implementasi fitur tangkap otomatis scene pertama HTML5 Canvas/WebGL begitu file HTML diunggah ke SceneForge Studio, termasuk deteksi kesiapan frame (anti-blank frame), sinkronisasi lifecycle iframe, komposisi multi-canvas yang terlihat, dan opsi kontrol auto-capture di panel Ekstraktor HTML.",
+  "updatedAt":  "2026-11-15T21:26:59.047761199Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}
