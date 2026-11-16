@@ -889,16 +889,16 @@ export function renderMockupToCanvas(
     ctx.lineTo(infoX - metaPx * 0.5, infoY + metaPx * 0.6);
     ctx.stroke();
 
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-    ctx.font = `700 ${metaPx}px ${uiFont}`;
-    ctx.fillStyle = config.textColor;
-    ctx.fillText(
-      badgeText ? badgeText.toUpperCase() : 'TITIK KOORDINAT',
-      infoX,
-      infoY,
-      safeContentWidth * 0.65
-    );
+    // Label waypoint memakai isian teks tombol CTA (Label Atas sebagai cadangan),
+    // menggantikan teks hardcoded "TITIK KOORDINAT".
+    const waypointLabel = ctaText || badgeText;
+    if (waypointLabel) {
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.font = `700 ${metaPx}px ${uiFont}`;
+      ctx.fillStyle = config.textColor;
+      ctx.fillText(waypointLabel.toUpperCase(), infoX, infoY, safeContentWidth * 0.65);
+    }
 
     if (subtitleText) {
       ctx.font = `500 ${Math.round(subtitlePx * 0.92)}px ${uiFont}`;

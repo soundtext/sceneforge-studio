@@ -171,8 +171,8 @@ export const MOCKUP_OPTIONS: MockupOptionMeta[] = [
     index: '05',
     group: 'reference',
     name: 'Header Monumental & Pin Peta',
-    subtitle: 'Referensi · Judul Atas + Koordinat',
-    description: 'Tipografi monumental di atas karakter dengan ringkasan misi dan penanda titik peta taktis di kiri bawah.',
+    subtitle: 'Referensi · Judul Atas + Label CTA',
+    description: 'Tipografi monumental di atas karakter dengan ringkasan misi dan penanda titik peta taktis di kiri bawah yang memakai isian teks tombol CTA.',
     defaultAlign: 'center',
   },
   {
